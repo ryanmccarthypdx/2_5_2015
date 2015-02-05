@@ -13,17 +13,18 @@ describe(Word) do
   end
 
   describe('#vanna_white') do
-    it("returns empty array if the letter ain't in there") do
+    it("returns all blanks if you vanna white a failure") do
       word = Word.create({:name => "attack"})
       word.populate
-      expect(word.vanna_white("n")).to(eq([]))
+      expect(word.vanna_white("n")).to(eq("______"))
     end
     it("returns an array of the locations of a") do
       word = Word.create({:name => "attack"})
       word.populate
-      expect(word.vanna_white("a")).to(eq([0,3]))
+      expect(word.vanna_white("a")).to(eq("a__a__"))
     end
   end
+
 
 
 end
