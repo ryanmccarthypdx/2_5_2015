@@ -29,7 +29,7 @@ post '/:status' do
   if original_partial_word == @word.partial_word
     @status += 1
     if @status == 4
-      redirect '/dead'
+      redirect "/dead/#{(@word.name)}"
     end
   end
   @display = @word.partial_word.split("").join(" ")
@@ -43,6 +43,7 @@ get '/win' do
   erb :win
 end
 
-get '/dead' do
+get '/dead/:name' do
+  @name = params.fetch('name')
   erb :dead
 end
