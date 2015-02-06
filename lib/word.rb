@@ -9,13 +9,12 @@ class Word < ActiveRecord::Base
       self.letters << letter
       array_partial_word.push("_")
     end
-    self.partial_word = array_partial_word.join
+    self.update({ :partial_word => array_partial_word.join })
   end
 
   def vanna_white(target)
     counter = 0
     output_array = []
-    @array_partial_word = []
     self.name.split("").each do |letter|
       if letter == target
         output_array.push(counter)
@@ -24,9 +23,11 @@ class Word < ActiveRecord::Base
     end
     output_array
     output_array.each do |found|
-      self.partial_word[found] = target
+      array = self.partial_word.split("")
+      array[found] = target
+      self.update({ :partial_word => array.join })
     end
-    self.partial_word
+    self
   end
 
 

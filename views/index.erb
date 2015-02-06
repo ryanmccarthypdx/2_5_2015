@@ -1,0 +1,18 @@
+
+<form action="/start" method="get">
+  <button type="submit" class="btn btn-success">Start new game</button>
+</form>
+
+<img src="/img/hangman<%= @status %>.jpeg" style="width:338px;height:400px">
+
+
+<h1><%= @display %></h1>
+
+
+<form action="/<%= @status %>" method="post">
+  <input type="hidden" name="word_id" value="<%= @word_id %>">
+  <input type="hidden" name="new_status" value="<%= @new_status %>">
+
+  <input id="letter_input" name="letter_input" placeholder="Enter your letter here">
+  <button type="submit" class="btn btn-danger">Guess</button>
+</form>
